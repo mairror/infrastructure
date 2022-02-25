@@ -1,0 +1,29 @@
+image:
+  repository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/eks/aws-ebs-csi-driver
+
+controller:
+  defaultFsType: ext4
+  extraVolumeTags:
+    project: "mairror"
+  logLevel: 2
+  priorityClassName: system-cluster-critical
+  region: us-east-2
+  replicaCount: 2
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  serviceAccount:
+    create: false
+    name: ebs-csi-controller-sa
+
+storageClasses:
+- name: gp3
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  volumeBindingMode: WaitForFirstConsumer
+  reclaimPolicy: Retain
+

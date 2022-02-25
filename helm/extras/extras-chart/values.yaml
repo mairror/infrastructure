@@ -1,0 +1,4 @@
+email: "test@test.com"
+aws:
+  region: "eu-central-1"
+  hostedzoneID: "YOURHOSTEDZONEID"

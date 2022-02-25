@@ -1,0 +1,7 @@
+releases:
+  - name: aws-ebs-csi-driver
+    namespace: kube-system
+    chart: aws-ebs-csi-driver/aws-ebs-csi-driver
+    version: 2.6.2
+    values:
+      - values.yaml

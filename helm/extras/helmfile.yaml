@@ -1,0 +1,6 @@
+releases:
+  - name: extra-charts
+    chart: ./extra-charts
+    values:
+      - values.yaml
+

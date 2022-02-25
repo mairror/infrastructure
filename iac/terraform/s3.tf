@@ -1,5 +1,9 @@
 resource "aws_s3_bucket" "mairror_images" {
-  bucket = var.mairro_bucket_name
+  bucket = var.mairror_bucket_name
+}
+
+resource "aws_s3_bucket_acl" "mairror_bucket_acl" {
+  bucket = aws_s3_bucket.mairror_images.id
   acl    = "private"
 }
 

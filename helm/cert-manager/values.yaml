@@ -1,0 +1,57 @@
+# https://cert-manager.io/docs/installation/helm/#option-2-install-crds-as-part-of-the-helm-release
+installCRDs: true
+
+global:
+  leaderElection:
+    namespace: "cert-manager"
+
+serviceAccount:
+  create: false
+  name: "cert-manager"
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 32Mi
+
+securityContext:
+  runAsNonRoot: true
+
+containerSecurityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+
+webhook:
+  securityContext:
+    runAsNonRoot: true
+
+  containerSecurityContext:
+    capabilities:
+      drop:
+      - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+
+cainjector:
+  securityContext:
+    runAsNonRoot: true
+
+  containerSecurityContext:
+    capabilities:
+      drop:
+      - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
