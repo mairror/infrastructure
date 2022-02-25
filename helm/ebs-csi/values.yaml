@@ -7,7 +7,7 @@ controller:
     project: "mairror"
   logLevel: 2
   priorityClassName: system-cluster-critical
-  region: us-east-2
+  region: eu-central-1
   replicaCount: 2
   resources:
     limits:
