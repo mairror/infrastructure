@@ -1,3 +1,3 @@
-data "aws_availability_zones" "ireland" {
+data "aws_availability_zones" "frankfurt" {
   state = "available"
 }

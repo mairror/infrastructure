@@ -5,7 +5,7 @@ module "vpc" {
   name = var.vpc_name
   cidr = var.vpc_cidr
 
-  azs             = data.aws_availability_zones.ireland.names
+  azs             = data.aws_availability_zones.frankfurt.names
   private_subnets = var.vpc_cidr_private_subnets
   public_subnets  = var.vpc_cidr_public_subnets
 
