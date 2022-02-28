@@ -39,4 +39,16 @@ nodeGroups:
     volumeType: gp3
     privateNetworking: true
     availabilityZones: ["eu-central-1"]
-    containerRuntime: containerd
+    containerRuntime: containerdvpc:
+  id: vpc-083795f286942da81
+  subnets:
+    private:
+      eu-central-1a:
+        id: subnet-06800f481b7b5d559
+      eu-central-1b:
+        id: subnet-0505257b9adc2a31b
+    public:
+      eu-central-1a:
+        id: subnet-0f899f4c9e74d7052
+      eu-central-1b:
+        id: subnet-09a182f1cff4d4e96

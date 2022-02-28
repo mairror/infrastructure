@@ -1,3 +1,9 @@
+variable "project_name" {
+  type        = string
+  description = "The project's name"
+  default     = "mairror"
+}
+
 variable "region" {
   type        = string
   description = "AWS Region to use by the provider"
@@ -35,11 +41,11 @@ variable "vpc_name" {
 variable "tf_state_bucket" {
   type        = string
   description = "Bucket to save the state"
-  default     = "test_bucket_name"
+  default     = "mairror-tfstate"
 }
 
 variable "mairror_bucket_name" {
   type        = string
   description = "Bucket name to save images"
-  default     = "mairror_test_bucket"
+  default     = "mairror-images"
 }
