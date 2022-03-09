@@ -38,14 +38,23 @@ variable "vpc_name" {
 
 # S3 VARIABLES
 
-variable "tf_state_bucket" {
-  type        = string
-  description = "Bucket to save the state"
-  default     = "mairror-tfstate"
-}
-
 variable "mairror_bucket_name" {
   type        = string
   description = "Bucket name to save images"
   default     = "mairror-images"
+}
+
+
+# SQS VARIABLES
+
+variable "raw_queue_name" {
+  type        = string
+  description = "Raw queue mairror for getting event notification from s3"
+  default     = "raw-mairror"
+}
+
+variable "predict_queue_name" {
+  type        = string
+  description = "Queue used for the predictions"
+  default     = "mairror-predict"
 }

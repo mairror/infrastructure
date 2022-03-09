@@ -27,6 +27,63 @@ iam:
       namespace: cert-manager
     wellKnownPolicies:
       certManager: true
+  - metadata:
+      name: mairror-processor
+      namespace: mairror
+    attachPolicy: 
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "sqs:DeleteMesssage*"
+        - "sqs:Get*"
+        - "sqs:List*"
+        - "sqs:ReceiveMessage*"
+        Resource: 'arn:aws:sqs:eu-central-1:*:mairror-raw'
+      - Effect: Allow
+        Action:
+        - "sqs:Get*"
+        - "sqs:List*"
+        - "sqs:Send*"
+        Resource: 'arn:aws:sqs:eu-central-1:*:mairror-predict'
+      - Effect: Allow
+        Action:
+        - "s3:ListBucket"
+        Resource: 'arn:aws:s3:::mairror-images'
+      - Effect: Allow
+        Action:
+        - "s3:GetObject"
+        - "s3:GetObjectVersion"
+        Resource: 'arn:aws:s3:::mairror-images/*'
+  - metadata:
+      name: mairror-predictor
+      namespace: mairror
+    attachPolicy: 
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "sqs:DeleteMesssage*"
+        - "sqs:Get*"
+        - "sqs:List*"
+        - "sqs:ReceiveMessage*"
+        Resource: 'arn:aws:sqs:eu-central-1:*:mairror-predict'
+  - metadata:
+      name: mairror-api
+      namespace: mairror
+    attachPolicy: 
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "s3:ListBucket"
+        Resource: 'arn:aws:s3:::mairror-images'
+      - Effect: Allow
+        Action:
+        - "s3:GetObject"
+        - "s3:GetObjectVersion"
+        - "s3:PutObject"
+        Resource: 'arn:aws:s3:::mairror-images/*'
 
 nodeGroups:
   - name: ng-mairror-1
@@ -39,16 +96,5 @@ nodeGroups:
     volumeType: gp3
     privateNetworking: true
     availabilityZones: ["eu-central-1"]
-    containerRuntime: containerdvpc:
-  id: vpc-083795f286942da81
-  subnets:
-    private:
-      eu-central-1a:
-        id: subnet-06800f481b7b5d559
-      eu-central-1b:
-        id: subnet-0505257b9adc2a31b
-    public:
-      eu-central-1a:
-        id: subnet-0f899f4c9e74d7052
-      eu-central-1b:
-        id: subnet-09a182f1cff4d4e96
+    containerRuntime: containerd
+

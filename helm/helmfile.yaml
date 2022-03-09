@@ -5,8 +5,6 @@ repositories:
     url: https://kubernetes-sigs.github.io/external-dns/
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
-  - name: strimzi
-    url: https://strimzi.io/charts/
   - name: aws-ebs-csi-driver
     url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
 

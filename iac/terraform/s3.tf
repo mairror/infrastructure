@@ -48,3 +48,13 @@ resource "aws_s3_bucket_lifecycle_configuration" "mairror_versioning_bucket_conf
     status = "Enabled"
   }
 }
+
+resource "aws_s3_bucket_notification" "mairror_bucket_notification" {
+  bucket = aws_s3_bucket.mairror_images.id
+
+  queue {
+    queue_arn      = aws_sqs_queue.raw_queue.arn
+    events         = ["s3:ObjectCreated:Put"]
+    filter_preffix = "raw/"
+  }
+}
