@@ -1,3 +1,7 @@
+locals {
+  cluster_name = "mairror-cluster"
+}
+
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 3.0"

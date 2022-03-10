@@ -49,7 +49,7 @@
 | <a name="input_mairror_bucket_name"></a> [mairror\_bucket\_name](#input\_mairror\_bucket\_name) | Bucket name to save images | `string` | `"mairror-images"` | no |
 | <a name="input_predict_queue_name"></a> [predict\_queue\_name](#input\_predict\_queue\_name) | Queue used for the predictions | `string` | `"mairror-predict"` | no |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The project's name | `string` | `"mairror"` | no |
-| <a name="input_raw_queue_name"></a> [raw\_queue\_name](#input\_raw\_queue\_name) | Raw queue mairror for getting event notification from s3 | `string` | `"raw-mairror"` | no |
+| <a name="input_raw_queue_name"></a> [raw\_queue\_name](#input\_raw\_queue\_name) | Raw queue mairror for getting event notification from s3 | `string` | `"mairror-raw"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS Region to use by the provider | `string` | `"eu-central-1"` | no |
 | <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | VPC cidr to use | `string` | `"10.20.0.0/16"` | no |
 | <a name="input_vpc_cidr_private_subnets"></a> [vpc\_cidr\_private\_subnets](#input\_vpc\_cidr\_private\_subnets) | Private subnets cidr az-1, az-2, az-3 | `list(string)` | <pre>[<br>  "10.20.0.0/24",<br>  "10.20.1.0/24",<br>  "10.20.2.0/24"<br>]</pre> | no |

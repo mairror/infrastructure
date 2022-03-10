@@ -1,6 +1,6 @@
 resource "aws_sqs_queue" "raw_queue" {
   name                      = var.raw_queue_name
-  delay_seconds             = 60
+  delay_seconds             = 2
   max_message_size          = 2048
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10
@@ -12,7 +12,7 @@ resource "aws_sqs_queue" "raw_queue" {
       "Effect": "Allow",
       "Principal": "*",
       "Action": "sqs:SendMessage",
-      "Resource": "arn:aws:sqs:*:*:${var.raw_queue_name},
+      "Resource": "arn:aws:sqs:*:*:${var.raw_queue_name}",
       "Condition": {
         "ArnEquals": { "aws:SourceArn": "${aws_s3_bucket.mairror_images.arn}" }
       }
@@ -24,7 +24,7 @@ POLICY
 
 resource "aws_sqs_queue" "predict_queue" {
   name                      = var.predict_queue_name
-  delay_seconds             = 60
+  delay_seconds             = 2
   max_message_size          = 2048
   message_retention_seconds = 86400
   receive_wait_time_seconds = 10

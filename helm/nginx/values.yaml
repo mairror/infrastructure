@@ -3,7 +3,6 @@ controller:
     default: true
   service:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: ""
       external-dns.alpha.kubernetes.io/ttl: "60"
       service.beta.kubernetes.io/aws-load-balancer-type: nlb
       service.beta.kubernetes.io/aws-load-balancer-subnets: mairror-vpc-public-eu-central-1a

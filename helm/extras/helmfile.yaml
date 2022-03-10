@@ -1,6 +1,9 @@
 releases:
-  - name: extra-charts
-    chart: ./extra-charts
+  - name: extras-chart
+    chart: ./extras-chart
+    namespace: default
     values:
       - values.yaml
+    secrets:
+      - secrets.yaml
 

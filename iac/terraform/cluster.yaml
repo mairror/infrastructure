@@ -35,16 +35,11 @@ iam:
       Statement:
       - Effect: Allow
         Action:
-        - "sqs:DeleteMesssage*"
-        - "sqs:Get*"
-        - "sqs:List*"
-        - "sqs:ReceiveMessage*"
+        - "sqs:*"
         Resource: 'arn:aws:sqs:eu-central-1:*:mairror-raw'
       - Effect: Allow
         Action:
-        - "sqs:Get*"
-        - "sqs:List*"
-        - "sqs:Send*"
+        - "sqs:*"
         Resource: 'arn:aws:sqs:eu-central-1:*:mairror-predict'
       - Effect: Allow
         Action:
@@ -63,10 +58,7 @@ iam:
       Statement:
       - Effect: Allow
         Action:
-        - "sqs:DeleteMesssage*"
-        - "sqs:Get*"
-        - "sqs:List*"
-        - "sqs:ReceiveMessage*"
+        - "sqs:*"
         Resource: 'arn:aws:sqs:eu-central-1:*:mairror-predict'
   - metadata:
       name: mairror-api
@@ -85,16 +77,30 @@ iam:
         - "s3:PutObject"
         Resource: 'arn:aws:s3:::mairror-images/*'
 
+vpc:
+  id: "vpc-06b4e31e62d4e6102"
+  subnets:
+    private:
+      eu-central-1a:
+        id: "subnet-0a9341ba4f0f51489"
+      eu-central-1b:
+        id: "subnet-05740f33b04f0c8a0"
+    public:
+      eu-central-1a:
+        id: "subnet-0368819ae7ac005c5"
+      eu-central-1b:
+        id: "subnet-094deb3b0507562e7"
+
 nodeGroups:
   - name: ng-mairror-1
     amiFamily: AmazonLinux2
     minSize: 2
     maxSize: 2
     desiredCapacity: 2
-    instanceType: t2.micro
+    instanceType: t2.medium
     volumeSize: 10
     volumeType: gp3
     privateNetworking: true
-    availabilityZones: ["eu-central-1"]
+    availabilityZones: ["eu-central-1a"]
     containerRuntime: containerd
 

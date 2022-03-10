@@ -1,0 +1,88 @@
+mairror_front:
+  fullname: mairror-front
+  image: 
+    tag: latest
+  ingress:
+    className: nginx
+    enabled: true
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: "mairror.aacecan.com"
+      cert-manager.io/cluster-issuer: "mairror-prod"
+      nginx.ingress.kubernetes.io/proxy-body-size: 25m
+    hosts:
+      - host: mairror.aacecan.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+        - mairror.aacecan.com
+        secretName: "mairror-aacecan-com-tls"
+  secrets:
+    create: true
+
+mairror_predictor:
+  fullname: mairror-predictor
+  serviceAccount: 
+    create: false
+  image: 
+    tag: latest
+  secrets:
+    create: true
+  resources:
+    limits:
+      cpu: 100m
+      memory: 1500Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+mairror_processor:
+  fullname: mairror-processor
+  serviceAccount: 
+    create: false
+  image: 
+    tag: latest
+  secrets:
+    create: true
+  resources:
+    limits:
+      cpu: 100m
+      memory: 1500Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+
+mairror_api:
+  fullname: mairror-api
+  serviceAccount: 
+    create: false
+  image: 
+    tag: latest
+  ingress:
+    className: nginx
+    enabled: true
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: "api.mairror.aacecan.com"
+      cert-manager.io/cluster-issuer: "mairror-prod"
+    hosts:
+      - host: api.mairror.aacecan.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+        - api.mairror.aacecan.com
+        secretName: "api-mairror-aacecan-com-tls"
+  secrets:
+    create: true
+
+mairror_bot:
+  fullname: mairror-bot
+  serviceAccount: 
+    create: true
+  image: 
+    tag: latest
+  secrets:
+    create: true

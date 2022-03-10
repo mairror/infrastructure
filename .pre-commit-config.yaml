@@ -9,6 +9,8 @@ repos:
         - ./terraform
     - id: terraform_tflint
       args:
+        - --args=--init
+        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
         - --args=--enable-rule=terraform_comment_syntax
         - --args=--enable-rule=terraform_deprecated_index
         - --args=--enable-rule=terraform_deprecated_interpolation

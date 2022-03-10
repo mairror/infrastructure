@@ -50,7 +50,7 @@ variable "mairror_bucket_name" {
 variable "raw_queue_name" {
   type        = string
   description = "Raw queue mairror for getting event notification from s3"
-  default     = "raw-mairror"
+  default     = "mairror-raw"
 }
 
 variable "predict_queue_name" {

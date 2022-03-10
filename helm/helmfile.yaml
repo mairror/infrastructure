@@ -7,9 +7,12 @@ repositories:
     url: https://kubernetes.github.io/ingress-nginx
   - name: aws-ebs-csi-driver
     url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+  - name: mairror
+    url: https://mairror.github.io/helm-chart/
 
 helmDefaults:
   createNamespace: true
 
 helmfiles:
+  - ./cert-manager/helmfile.yaml
   - ./*/helmfile.yaml

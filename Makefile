@@ -10,5 +10,7 @@ help: ## This help.
 # Docker
 # -------------------------------------------------------------------------
 .PHONY: terraform-test
-terraform-test:
+terraform-test: ## Test Terraform and make docs
 	docker run -v $(PWD):/lint -w /lint ghcr.io/antonbabenko/pre-commit-terraform:latest run -a
+.DEFAULT_GOAL := terraform-test
+

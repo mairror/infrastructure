@@ -1,12 +1,12 @@
 sources:
-  - service
+  - ingress
 
 serviceAccount:
   create: false
   name: "external-dns"
 
 domainFilters:
-  - ""
+  - "mairror.aacecan.com"
 
 resources:
   requests:

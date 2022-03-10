@@ -32,29 +32,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "mairror_versioning_bucket_conf
 
     status = "Enabled"
   }
-
-  rule {
-    id = "processed"
-
-    filter {
-      prefix = "processed/"
-    }
-
-    noncurrent_version_transition {
-      noncurrent_days = 15
-      storage_class   = "INTELLIGENT_TIERING"
-    }
-
-    status = "Enabled"
-  }
 }
 
 resource "aws_s3_bucket_notification" "mairror_bucket_notification" {
   bucket = aws_s3_bucket.mairror_images.id
 
   queue {
-    queue_arn      = aws_sqs_queue.raw_queue.arn
-    events         = ["s3:ObjectCreated:Put"]
-    filter_preffix = "raw/"
+    queue_arn     = aws_sqs_queue.raw_queue.arn
+    events        = ["s3:ObjectCreated:Put"]
+    filter_prefix = "raw/"
   }
 }
