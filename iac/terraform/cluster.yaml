@@ -1,0 +1,106 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: mairror-cluster
+  region: eu-central-1
+  version: "1.21"
+  tags:
+    project: "mairror"
+
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: ebs-csi-controller-sa
+      namespace: kube-system
+    wellKnownPolicies:
+      ebsCSIController: true
+  - metadata:
+      name: external-dns
+      namespace: external-dns
+    wellKnownPolicies:
+      externalDNS: true
+  - metadata:
+      name: cert-manager
+      namespace: cert-manager
+    wellKnownPolicies:
+      certManager: true
+  - metadata:
+      name: mairror-processor
+      namespace: mairror
+    attachPolicy: 
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "sqs:*"
+        Resource: 'arn:aws:sqs:eu-central-1:*:mairror-raw'
+      - Effect: Allow
+        Action:
+        - "sqs:*"
+        Resource: 'arn:aws:sqs:eu-central-1:*:mairror-predict'
+      - Effect: Allow
+        Action:
+        - "s3:ListBucket"
+        Resource: 'arn:aws:s3:::mairror-images'
+      - Effect: Allow
+        Action:
+        - "s3:GetObject"
+        - "s3:GetObjectVersion"
+        Resource: 'arn:aws:s3:::mairror-images/*'
+  - metadata:
+      name: mairror-predictor
+      namespace: mairror
+    attachPolicy: 
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "sqs:*"
+        Resource: 'arn:aws:sqs:eu-central-1:*:mairror-predict'
+  - metadata:
+      name: mairror-api
+      namespace: mairror
+    attachPolicy: 
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "s3:ListBucket"
+        Resource: 'arn:aws:s3:::mairror-images'
+      - Effect: Allow
+        Action:
+        - "s3:GetObject"
+        - "s3:GetObjectVersion"
+        - "s3:PutObject"
+        Resource: 'arn:aws:s3:::mairror-images/*'
+
+vpc:
+  id: "vpc-06b4e31e62d4e6102"
+  subnets:
+    private:
+      eu-central-1a:
+        id: "subnet-0a9341ba4f0f51489"
+      eu-central-1b:
+        id: "subnet-05740f33b04f0c8a0"
+    public:
+      eu-central-1a:
+        id: "subnet-0368819ae7ac005c5"
+      eu-central-1b:
+        id: "subnet-094deb3b0507562e7"
+
+nodeGroups:
+  - name: ng-mairror-1
+    amiFamily: AmazonLinux2
+    minSize: 2
+    maxSize: 2
+    desiredCapacity: 2
+    instanceType: t2.medium
+    volumeSize: 10
+    volumeType: gp3
+    privateNetworking: true
+    availabilityZones: ["eu-central-1a"]
+    containerRuntime: containerd
+

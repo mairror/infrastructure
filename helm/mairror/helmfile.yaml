@@ -1,0 +1,10 @@
+releases:
+  - name: mairror
+    namespace: mairror
+    chart: mairror/mairror
+    version: 0.0.4
+    values:
+      - values.yaml
+    secrets:
+      - secrets.yaml
+

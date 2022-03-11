@@ -1,0 +1,13 @@
+controller:
+  ingressClassResource:
+    default: true
+  service:
+    annotations:
+      external-dns.alpha.kubernetes.io/ttl: "60"
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+      service.beta.kubernetes.io/aws-load-balancer-subnets: mairror-vpc-public-eu-central-1a
+      service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: preserve_client_ip.enabled=true
+      service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
+    enableHttp: false
+
