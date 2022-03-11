@@ -15,9 +15,9 @@ updates:
       - "aacecandev"
       - "blopezpi"
     commit-message:
-      prefix: "[Github Actions Update dependencies]"
+      prefix: "[Github]"
 
-  # Maintain dependencies for pip on api
+  # Maintain dependencies for terraform
   - package-ecosystem: "terraform"
     directory: "/iac"
     target-branch: "main"
@@ -27,4 +27,4 @@ updates:
       - "aacecandev"
       - "blopezpi"
     commit-message:
-      prefix: "[Terraform Update dependencies]"
+      prefix: "[TF]"
