@@ -19,9 +19,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
           AWS_ACCOUNT_ID: "${{ secrets.AWS_ACCOUNT_ID }}"
         run: |
-          sed -i "s/AWS_ACCOUNT_ID_REPLACE_ME/$AWS_ACCOUNT_ID/" iac/terraform/aws-nuke-config.yaml
+          sed -i "s/AWS_ACCOUNT_ID_REPLACE_ME/${{ AWS_ACCOUNT_ID }}/" iac/terraform/aws-nuke-config.yaml
           wget -q https://github.com/rebuy-de/aws-nuke/releases/download/v2.15.0-rc.3/aws-nuke-v2.15.0.rc.3-linux-amd64.tar.gz
           tar -xvf aws-nuke-v2.15.0.rc.3-linux-amd64.tar.gz
           mv aws-nuke-v2.15.0.rc.3-linux-amd64 aws-nuke
           chmod +x aws-nuke
-          ./aws-nuke --config iac/terraform/aws-nuke-config.yaml --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY --quiet --force --no-dry-run --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY
+          ./aws-nuke --config iac/terraform/aws-nuke-config.yaml --access-key-id "${{ env.AWS_ACCESS_KEY_ID }}" --secret-access-key "${{ env.AWS_SECRET_ACCESS_KEY }}" --quiet --force --no-dry-run --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY
