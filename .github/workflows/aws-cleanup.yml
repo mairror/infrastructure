@@ -24,4 +24,4 @@ jobs:
           tar -xvf aws-nuke-v2.15.0.rc.3-linux-amd64.tar.gz
           mv aws-nuke-v2.15.0.rc.3-linux-amd64 aws-nuke
           chmod +x aws-nuke
-          ./aws-nuke --config iac/terraform/aws-nuke-config.yaml --access-key-id ${{ env.AWS_ACCESS_KEY_ID }} --secret-access-key ${{ env.AWS_SECRET_ACCESS_KEY }} --quiet --force --no-dry-run --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_ACCESS_KEY
+          ./aws-nuke --config iac/terraform/aws-nuke-config.yaml --access-key-id "${{ env.AWS_ACCESS_KEY_ID }}" --secret-access-key "${{ env.AWS_SECRET_ACCESS_KEY }}" --quiet --force --no-dry-run
