@@ -60,7 +60,7 @@ def get_and_write_output():
     }
 
     data["vpc"]["id"] = args.vpcid
-    
+
     data["vpc"]["subnets"]["public"]["eu-central-1a"]["id"] = args.public_a
     data["vpc"]["subnets"]["public"]["eu-central-1b"]["id"] = args.public_b
 

@@ -1,0 +1,6 @@
+[severity]
+level = "medium"
+[rules]
+    skip-rules = [
+        "accurics.kubernetes.IAM.107"
+    ]

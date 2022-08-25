@@ -1,6 +1,6 @@
 mairror_front:
   fullname: mairror-front
-  image: 
+  image:
     tag: latest
   ingress:
     className: nginx
@@ -16,16 +16,16 @@ mairror_front:
             pathType: Prefix
     tls:
       - hosts:
-        - mairror.aacecan.com
-        secretName: "mairror-aacecan-com-tls"
+          - mairror.aacecan.com
+        secretName: "mairror-aacecan-com-tls" #checkov:skip=CKV_SECRET_6: "Base64 High Entropy String"
   secrets:
     create: true
 
 mairror_predictor:
   fullname: mairror-predictor
-  serviceAccount: 
+  serviceAccount:
     create: false
-  image: 
+  image:
     tag: latest
   secrets:
     create: true
@@ -39,9 +39,9 @@ mairror_predictor:
 
 mairror_processor:
   fullname: mairror-processor
-  serviceAccount: 
+  serviceAccount:
     create: false
-  image: 
+  image:
     tag: latest
   secrets:
     create: true
@@ -53,12 +53,11 @@ mairror_processor:
       cpu: 100m
       memory: 128Mi
 
-
 mairror_api:
   fullname: mairror-api
-  serviceAccount: 
+  serviceAccount:
     create: false
-  image: 
+  image:
     tag: latest
   ingress:
     className: nginx
@@ -73,16 +72,16 @@ mairror_api:
             pathType: Prefix
     tls:
       - hosts:
-        - api.mairror.aacecan.com
-        secretName: "api-mairror-aacecan-com-tls"
+          - api.mairror.aacecan.com
+        secretName: "api-mairror-aacecan-com-tls" #checkov:skip=CKV_SECRET_6: "Base64 High Entropy String"
   secrets:
     create: true
 
 mairror_bot:
   fullname: mairror-bot
-  serviceAccount: 
+  serviceAccount:
     create: true
-  image: 
+  image:
     tag: latest
   secrets:
     create: true

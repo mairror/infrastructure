@@ -4,12 +4,12 @@ metadata:
   name: mairror-prod
 spec:
   acme:
-    email: {{ .Values.email }}
+    email: "{{ .Values.email }}"
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: mairror-issuer-account-key
     solvers:
-    - dns01:
-        route53:
-          region: {{ .Values.aws.region }}
-          hostedZoneID: {{ .Values.aws.hostedzoneID }}
+      - dns01:
+          route53:
+            region: "{{ .Values.aws.region }}"
+            hostedZoneID: "{{ .Values.aws.hostedzoneID }}"

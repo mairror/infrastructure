@@ -6,14 +6,14 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.1.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 4.27.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.27.0 |
 | <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
 
 ## Modules
@@ -26,21 +26,28 @@
 
 | Name | Type |
 |------|------|
-| [aws_kms_alias.mairror_sops_alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
-| [aws_kms_key.mairror_sops](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
-| [aws_s3_account_public_access_block.mairror_block](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_account_public_access_block) | resource |
-| [aws_s3_bucket.mairror_images](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_acl.mairror_bucket_acl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
-| [aws_s3_bucket_lifecycle_configuration.mairror_versioning_bucket_config](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration) | resource |
-| [aws_s3_bucket_notification.mairror_bucket_notification](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_notification) | resource |
-| [aws_security_group.all_worker_mgmt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_security_group.worker_group_mgmt_one](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_security_group.worker_group_mgmt_two](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_sqs_queue.predict_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
-| [aws_sqs_queue.raw_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
-| [aws_vpc_endpoint.s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) | resource |
+| [aws_kms_alias.mairror_sops_alias](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/kms_alias) | resource |
+| [aws_kms_key.mairror_sops](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/kms_key) | resource |
+| [aws_s3_bucket.log_bucket](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket.mairror_images](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_acl.log_bucket_acl](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_acl.mairror_bucket_acl](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_lifecycle_configuration.mairror_versioning_bucket_config](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_lifecycle_configuration) | resource |
+| [aws_s3_bucket_logging.log_bucket_logging](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_logging) | resource |
+| [aws_s3_bucket_notification.mairror_bucket_notification](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_notification) | resource |
+| [aws_s3_bucket_public_access_block.log_bucket_block](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_public_access_block.mairror_block](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_public_access_block.mairror_bucket_block_public_acls](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_server_side_encryption_configuration.mairror_sse_kms](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_s3_bucket_versioning.mairror_bucket_versioning](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_security_group.all_worker_mgmt](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/security_group) | resource |
+| [aws_security_group.worker_group_mgmt_one](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/security_group) | resource |
+| [aws_security_group.worker_group_mgmt_two](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/security_group) | resource |
+| [aws_sqs_queue.predict_queue](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/sqs_queue) | resource |
+| [aws_sqs_queue.raw_queue](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/sqs_queue) | resource |
+| [aws_vpc_endpoint.s3](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/resources/vpc_endpoint) | resource |
 | [null_resource.network_value](https://registry.terraform.io/providers/hashicorp/null/3.1.0/docs/resources/resource) | resource |
-| [aws_availability_zones.frankfurt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws_availability_zones.frankfurt](https://registry.terraform.io/providers/hashicorp/aws/4.27.0/docs/data-sources/availability_zones) | data source |
 
 ## Inputs
 

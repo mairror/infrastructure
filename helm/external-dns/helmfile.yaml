@@ -5,4 +5,3 @@ releases:
     version: 1.7.1
     values:
       - values.yaml
-

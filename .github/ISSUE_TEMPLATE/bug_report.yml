@@ -1,6 +1,6 @@
 name: Bug report
 description: You've found a bug with Mairror infrastructure.
-labels: ['type:bug', 'status:requirements', 'priority-5-triage']
+labels: ["type:bug", "status:requirements", "priority-5-triage"]
 body:
   - type: markdown
     attributes:
@@ -14,9 +14,9 @@ body:
     attributes:
       label: How are you deploying Mairror infrastructure?
       options:
-        - 'AWS'
-        - 'Self-hosted'
-        - 'Other'
+        - "AWS"
+        - "Self-hosted"
+        - "Other"
     validations:
       required: true
 
@@ -25,8 +25,8 @@ body:
     attributes:
       label: How are you running Renovate?
       options:
-        - 'Helm'
-        - 'Terraform'
+        - "Helm"
+        - "Terraform"
     validations:
       required: true
 
@@ -42,8 +42,8 @@ body:
     attributes:
       label: Was this something which used to work for you, and then stopped?
       options:
-        - 'It used to work, and then stopped'
-        - 'I never saw this working'
+        - "It used to work, and then stopped"
+        - "I never saw this working"
     validations:
       required: true
 
@@ -51,7 +51,7 @@ body:
     id: describe-bug
     attributes:
       label: Describe the bug
-      description: 'Do not report any security concerns here. Email organization members instead.'
+      description: "Do not report any security concerns here. Email organization members instead."
     validations:
       required: true
 
@@ -80,8 +80,8 @@ body:
       label: Have you created a minimal reproduction repository?
       description: Please read the [minimal reproductions documentation](https://github.com/renovatebot/renovate/blob/main/docs/development/minimal-reproductions.md) to learn how to make a good minimal reproduction repository.
       options:
-        - 'I have linked to a minimal reproduction repository in the bug description'
-        - 'No reproduction, but I have linked to a public repo where it occurs'
-        - 'No reproduction repository'
+        - "I have linked to a minimal reproduction repository in the bug description"
+        - "No reproduction, but I have linked to a public repo where it occurs"
+        - "No reproduction repository"
     validations:
       required: true
