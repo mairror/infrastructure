@@ -21,9 +21,8 @@ controller:
     name: ebs-csi-controller-sa
 
 storageClasses:
-- name: gp3
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
-  volumeBindingMode: WaitForFirstConsumer
-  reclaimPolicy: Retain
-
+  - name: gp3
+    annotations:
+      storageclass.kubernetes.io/is-default-class: "true"
+    volumeBindingMode: WaitForFirstConsumer
+    reclaimPolicy: Retain

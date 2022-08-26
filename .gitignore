@@ -27,3 +27,16 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+
+# TFLint files
+.tflint.d/
+
+# Checkov files
+.external_modules/
+
+# Infracost files
+.infracost-cache
+
+# Project specific files/dirs
+.envrc
+packer-builder-arm/

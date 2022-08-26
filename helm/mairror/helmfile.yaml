@@ -7,4 +7,3 @@ releases:
       - values.yaml
     secrets:
       - secrets.yaml
-

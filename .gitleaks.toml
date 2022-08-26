@@ -1,0 +1,16 @@
+title = "gitleaks config"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+description = "global allow lists"
+paths = [
+    '''.gitleaks.toml''',
+    '''.hadolint.yaml''',
+    '''.checkov.yaml''',
+    '''.editorconfig''',
+    '''(.*?)(jpg|gif|doc|docx|zip|xls|pdf|bin|svg|socket)$''',
+]

@@ -1,33 +1,84 @@
 repos:
-- repo: https://github.com/antonbabenko/pre-commit-terraform
-  rev: "v1.62.3"
-  hooks:
-    - id: terraform_fmt
-      args:
-        - --args=-no-color
-        - --args=-diff
-        - ./terraform
-    - id: terraform_tflint
-      args:
-        - --args=--init
-        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-        - --args=--enable-rule=terraform_comment_syntax
-        - --args=--enable-rule=terraform_deprecated_index
-        - --args=--enable-rule=terraform_deprecated_interpolation
-        - --args=--enable-rule=terraform_documented_outputs
-        - --args=--enable-rule=terraform_documented_variables
-        - --args=--enable-rule=terraform_module_pinned_source
-        - --args=--enable-rule=terraform_module_version
-        - --args=--enable-rule=terraform_naming_convention
-        - --args=--enable-rule=terraform_required_providers
-        # - --args=--enable-rule=terraform_required_version
-        # - --args=--enable-rule=terraform_standard_module_structure
-        - --args=--enable-rule=terraform_typed_variables
-        - --args=--enable-rule=terraform_unused_declarations
-        - --args=--enable-rule=terraform_unused_required_providers
-        # - --args=--enable-rule=terraform_workspace_remote
-    - id: terraform_docs
-      args:
-        - --hook-config=--path-to-file=README.md
-        - --hook-config=--add-to-existing-file=true
-        - --hook-config=--create-file-if-not-exist=true
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.3.0"
+    hooks:
+      - id: check-added-large-files
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: no-commit-to-branch
+        args:
+          - --branch=main
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v3.0.0-alpha.0"
+    hooks:
+      - id: prettier
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: "v1.74.1"
+    hooks:
+      - id: terraform_fmt
+        files: ""
+        args:
+          - --args=-no-color
+          - --args=-diff
+
+      - id: terraform_validate
+
+      - id: terraform_docs
+        args:
+          - path-to-file=README.md
+          - add-to-existing-file=true
+          - create-file-if-not-exist=true
+
+      - id: terraform_tflint
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+
+      - id: terrascan
+        args:
+          - --args=--config-path=.terrascan.toml
+          - --args=--iac-dir iac/terraform
+          - --args=--iac-type=terraform
+          - --args=--policy-type=aws
+
+      - id: terrascan
+        args:
+          - --args=--iac-dir helm
+          - --args=--iac-type=helm
+          - --args=--policy-type=k8s
+
+      - id: terraform_tfsec
+        files: ^iac/terraform/
+        args:
+          - >
+            --args=--format lovely
+            --no-color
+
+      - id: tfupdate
+        name: Autoupdate AWS provider versions
+        args:
+          - --args=provider aws # Will be pined to latest version
+
+      - id: infracost_breakdown
+        args:
+          - --args=--path=./iac/terraform
+          - --hook-config='.currency == "USD"'
+        verbose: true # Always show costs
+
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: "2.1.159"
+    hooks:
+      - id: checkov
+        files: ""
+        args: [--config-file=.checkov.yaml]
+
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: "v8.11.1"
+    hooks:
+      - id: gitleaks
+        args:
+          - hook-config=--config .gitleaks.toml

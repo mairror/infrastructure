@@ -1,2 +1,2 @@
 creation_rules:
-  - kms: 'arn:aws:kms:eu-central-1:733077684693:alias/mairror-sops'
+  - kms: "arn:aws:kms:eu-central-1:733077684693:alias/mairror-sops"
